@@ -1,0 +1,168 @@
+body {
+  font-family: ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif;
+  margin-top: 20px;
+}
+
+.body-container {
+  position: relative;
+}
+
+.nav-container {
+  position: absolute;
+  width: 150px;
+  overflow-x: none;
+  margin-top: -20px;
+}
+
+.nav-container button {
+  margin-top: 20px;
+}
+
+.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.body-content {
+  margin-left: 150px;
+}
+
+.page-content {
+  width: 100%;
+  height: 20em;
+  max-width: 600px;
+}
+
+.add-new-page {
+  margin-top: 35px;
+}
+
+button {
+  margin-right: 18px;
+}
+
+.form-field {
+  margin-bottom: 12px;
+}
+
+.form-field input {
+  width: 200px;
+}
+
+.form-field label {
+  display: inline-block;
+  width: 80px;
+}
+
+.page-nav {
+  line-height: 22px;
+  font-size: 18px;
+}
+
+.saved-transitions { 
+  margin-bottom: 20px;
+}
+
+.saved-transitions button { 
+  margin-left: 20px;
+}
+
+button, .btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  text-decoration: none;
+}
+
+button.closed-code-block {
+  background-color: #aa6708;
+  color: #FFF;
+}
+
+.btn-save {
+  background-color: #5cb85c;
+  color: #FFF;
+}
+
+.nav-container button {
+  width: 90%;
+}
+
+.btn-delete {
+  color: #fff;
+  background-color: #801515;
+}
+
+.page-transition {
+  margin-bottom: 8px;
+}
+
+.page-transition input {
+  width: 200px;
+}
+
+.transition-id-label {
+  display: inline-block;
+  font-weight: bold;
+  padding: 4px;
+  margin-left: 6px;
+}
+
+.output, .input {
+  height: 200px;
+  width: 100%;
+}
+
+.nav-links a {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.from-transition-id {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.code-block-container {
+  margin-bottom: 18px;
+}
+
+.code-block-container h5 {
+  margin-bottom: 3px;
+}
+
+.function-input {
+  width: 100%;
+  max-width: 600px;
+  height: 12em;
+  font-family: ‘Courier New’, Courier, monospace;
+  font-size: 14px;
+}
+
+h4 {
+  border-bottom: solid 1px #ccc;
+}
+
+.add-transition-action {
+  margin-top: 20px;
+}
