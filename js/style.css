@@ -8,69 +8,69 @@ body {
   margin: 16px;
 }
 
-.body-container {
+#designer .body-container {
   position: relative;
 }
 
-.nav-container {
+#designer .nav-container {
   position: absolute;
   width: 150px;
   overflow-x: none;
   margin-top: -20px;
 }
 
-.nav-container button {
+#designer .nav-container button {
   margin-top: 10px;
     width: 90%;
 }
 
-.view-start-page {
+#designer .view-start-page {
   background-color: #337ab7;
   color: #FFF;
 }
 
-.nav-container h3 {
+#designer .nav-container h3 {
   border-bottom: solid 1px #ccc;
 }
 
-.nav {
+#designer .nav {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-.body-content {
+#designer .body-content {
   margin-left: 168px;
 }
 
-.page-content {
+#designer .page-content {
   width: 100%;
   height: 20em;
   max-width: 600px;
 }
 
-.add-new-page {
+#designer .add-new-page {
   margin-top: 35px;
 }
 
-button {
+#designer button {
   margin-right: 18px;
 }
 
-.form-field {
+#designer .form-field {
   margin-bottom: 12px;
 }
 
-.form-field input {
+#designer .form-field input {
   width: 200px;
 }
 
-.form-field label {
+#designer .form-field label {
   display: inline-block;
   width: 100px;
 }
 
-.page-nav {
+#designer .page-nav {
   line-height: 22px;
   font-size: 15px;
   white-space: nowrap;
@@ -80,15 +80,15 @@ button {
   display: inline-block;
 }
 
-.saved-transitions { 
+#designer .saved-transitions { 
   margin-bottom: 20px;
 }
 
-.saved-transitions button { 
+#designer .saved-transitions button { 
   margin-left: 20px;
 }
 
-button, .btn {
+#designer button, .btn {
   display: inline-block;
   padding: 6px 12px;
   margin-bottom: 0;
@@ -114,78 +114,78 @@ button, .btn {
   text-decoration: none;
 }
 
-button.closed-code-block {
+#designer button.closed-code-block {
   background-color: #aa6708;
   color: #FFF;
   width: 220px;
   position: relative;
 }
 
-button.closed-code-block:before {
+#designer button.closed-code-block:before {
   content: '\003E';
   position: absolute;
   left: 10px;
 }
 
-.btn-save {
+#designer .btn-save {
   background-color: #5cb85c;
   color: #FFF;
 }
 
-.btn-delete {
+#designer .btn-delete {
   color: #fff;
   background-color: #801515;
 }
 
-.page-transition {
+#designer .page-transition {
   margin-bottom: 8px;
 }
 
-.page-transition input {
+#designer .page-transition input {
   width: 200px;
 }
 
-.transition-id-label {
+#designer .transition-id-label {
   display: inline-block;
   font-weight: bold;
   padding: 4px;
   margin-left: 6px;
 }
 
-.input {
+#designer .input {
   height: 200px;
   width: 100%;
 }
 
-.output {
+#designer .output {
   width: 100%;
   height: 600px;
 }
 
-.json-output {
+#designer .json-output {
   width: 100%;
   height: 200px;
 }
 
-.nav-links a {
+#designer .nav-links a {
   display: block;
   margin-bottom: 8px;
 }
 
-.from-transition-id {
+#designer .from-transition-id {
   display: inline-block;
   margin-left: 10px;
 }
 
-.code-block-container {
+#designer .code-block-container {
   margin-bottom: 18px;
 }
 
-.code-block-container h5 {
+#designer .code-block-container h5 {
   margin-bottom: 3px;
 }
 
-.function-input {
+#designer .function-input {
   width: 100%;
   max-width: 600px;
   height: 12em;
@@ -193,31 +193,31 @@ button.closed-code-block:before {
   font-size: 14px;
 }
 
-h4 {
+#designer h4 {
   border-bottom: solid 1px #ccc;
 }
 
-.add-transition-action {
+#designer .add-transition-action {
   margin-top: 20px;
 }
 
-.content-error {
+#designer .content-error {
   color: #d9534f;
 }
 
-.form-field-message {
+#designer .form-field-message {
   margin-top: -6px;
   padding-bottom: 18px;
   color: #999;
 }
 
-.code {
+#designer .code {
   font-family: ‘Courier New’, Courier, monospace;
   background-color: #ddd;
   padding: 8px;
 }
 
-pre {
+#designer pre {
     white-space: pre-wrap; /* CSS3 */
     white-space: -moz-pre-wrap; /* Mozilla, post millennium */
     white-space: -pre-wrap; /* Opera 4-6 */
@@ -225,7 +225,7 @@ pre {
     word-wrap: break-word; /* Internet Explorer 5.5+ */
 }
 
-.code-block-hint {
+#designer .code-block-hint {
   margin-top: 8px;
   background-color: #EEE;
   padding: 8px;
@@ -235,11 +235,11 @@ pre {
   max-width: 600px;
 }
 
-.btn-info {
+#designer .btn-info {
   background-color: #5bc0de;
 }
 
-.test-book {
+#designer .test-book {
   background-color: #337ab7;
   color: #FFF;
 }
