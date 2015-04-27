@@ -1,7 +1,7 @@
 {
-  "name": "treasure-hunt",
+  "name": "choyo-designer",
   "version": "0.0.1",
-  "description": "treasure-hunt",
+  "description": "choyo-designer",
   "scripts": {
     "test": "gulp test"
   },
@@ -19,6 +19,8 @@
     "extract-text-webpack-plugin": "^0.5.0",
     "file-loader": "~0.7",
     "html-webpack-plugin": "^1.1.0",
+    "image-webpack-loader": "^1.4.0",
+    "imagemin": "^3.1.0",
     "imports-loader": "^0.6.3",
     "jsdom": "^3.1.2",
     "json-loader": "^0.5.1",

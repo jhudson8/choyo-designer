@@ -1,6 +1,11 @@
 body {
   font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
-  margin-top: 20px;
+  margin: 0;
+}
+
+
+#designer {
+  margin: 16px;
 }
 
 .body-container {
@@ -232,4 +237,9 @@ pre {
 
 .btn-info {
   background-color: #5bc0de;
+}
+
+.test-book {
+  background-color: #337ab7;
+  color: #FFF;
 }

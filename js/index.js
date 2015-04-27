@@ -1,8 +1,3 @@
-/*
-global.resourcePublicPath = global.resourcePublicPath || 'https://dl.dropboxusercontent.com/u/6589453/book/app/';
-__webpack_public_path__ = global.resourcePublicPath;
-*/
-
 var React = require('react');
 var Backbone = require('backbone');
 var _ = require('underscore');
@@ -98,14 +93,81 @@ function doAddPage(pageId) {
 }
 
 function render(component) {
-  React.render(<div/>, document.body);
+  React.render(<div/>, document.getElementById('designer'));
 
   var Nav = require('./nav');
   var toRender = <div className="body-container">
-    <nav><Nav pages={data.pages} addPage={newPage}/></nav>
+    <nav><Nav pages={data.pages} addPage={newPage} testBook={testBook}/></nav>
     <div className="body-content">{component}</div>
   </div>
-  React.render(toRender, document.body);
+  React.render(toRender, document.getElementById('designer'));
+}
+
+var testing = false;
+function testBook() {
+  testing = true;
+  document.getElementById('designer').style.display = 'none';
+  React.unmountComponentAtNode(document.getElementById('designer'));
+
+  var book = wrapBookForTesting();
+  var engine = require('./choyo/js/engine');
+  var context = engine.reset();
+  context.save = function() {};
+
+  // show the main page
+  function navigator(route) {
+    if (!route || route === 'main' || route === 'book') {
+      context = engine.reset();
+      context.save = function() {};
+      context = engine.startBook(book, context, navigator);
+      return;
+    }
+    var pattern = /page\/(.+)/;
+    var match = route.match(pattern);
+    if (match) {
+      engine.showPage(match[1], book, context, navigator);
+    } else {
+      alert('unknown route: ' + route);
+    }
+  }
+
+  engine.startBook(book, context, navigator);
+}
+
+function wrapBookForTesting() {
+  var _book = _.clone(data);
+  if (_book.setup) {
+    var func = '(function() {\n' + _book.setup + '\n}).call(this)';
+    _book.setup = function() {
+      eval(func);
+    }
+  }
+
+  _.each(_book.pages, function(page, id) {
+    var _page = _.clone(page);
+    _page.choices = page.transitions;
+    _page.content = function() {
+      if (page.onShow) {
+        var showFunc = '(function() {\n' + _page.onShow + '\n}).call(this)';
+        eval(showFunc);
+      }
+
+      var componentCode = require('react-tools').transform('<div>' + page.content + '</div>');
+      var _component;
+      var componentFunc = '(function() {\n_component = ' + componentCode + ' }).call(this);';
+      eval(componentFunc);
+      return _component;
+    }
+
+    if (page.onLeave) {
+      var leaveFunc = '(function() {\n' + _page.onLeave + '\n}).call(this, id)';
+      _page.choiceMade = function(id) {
+        eval(leaveFunc);
+      }
+    }
+    _book.pages[id] = _page;
+  });
+  return _book;
 }
 
 
@@ -121,3 +183,19 @@ var Router = Backbone.Router.extend({
 });
 new Router();
 Backbone.history.start();
+
+
+document.body.onkeypress = function(e) {
+  if (!testing) {
+    return;
+  }
+  document.getElementById('designer').style.display = 'block';
+  e = e || window.event;
+  var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
+  if (charCode === 113) {
+    // "q"
+    testing = false;
+    React.unmountComponentAtNode(document.getElementById('book'));
+    Backbone.history.loadUrl();
+  }
+};
