@@ -18,7 +18,7 @@ module.exports = React.createClass({
     var data = this.props.data;
 
     return <div>
-      <h2>Choose your own adventure story builder</h2>
+      <h2>Choose your own adventure story designer</h2>
 
       <FormField ref="title" label="Book Title" name="title" defaultValue={data.title} onChange={this.saveTitle}/>
 

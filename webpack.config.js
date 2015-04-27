@@ -13,7 +13,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            // template: 'public/index.html'
+            template: 'public/index.html'
         }),
         // ignjore "jquery" because exoskeleton will try to load it and the ajax lib will try to load "type"
         new webpack.IgnorePlugin(/^(jquery|type)$/)
