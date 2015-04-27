@@ -37,12 +37,22 @@ module.exports = React.createClass({
         </p>
         <p>
           <button type="button" className="view-start-page" onClick={this.link('editor/page/main')}>View your start page</button>
+          or <button type="button" className="view-start-page" onClick={this.props.addPage}>Add a new page</button>.
+        </p>
+        <p>
+          You can always come back here by clicking <b>Edit cover page</b> on the left of the screen.
         </p>
         <p>
           When you are happy with your book and want to share it or you just want to test it out
         </p>
         <p>
           <button type="button" className="view-start-page" onClick={this.link('editor/page/main')}>Share my story</button>
+        </p>
+        <p>
+          To see an example story (and what you can do if you want to program just a little bit), check out <a href="http://jhudson8.github.io/choyo-designer/story-thebomb.html" target="_blank">The Bomb!</a>.
+        </p>
+        <p>
+          To see how "The Bomb!" was created, click <button type="button" className="view-start-page" onClick={this.link('editor/json-output')}>Backup / Restore</button> and, in the restore section at the bottom, paste in <a href="http://jhudson8.github.io/choyo-designer/story-thebomb-src.json">this stuff</a>.  Then click "Restore" (Make sure to "show advanced features" (see bottom here and when looking at the pages) to see the programming.
         </p>
         <p>
           <br/>
