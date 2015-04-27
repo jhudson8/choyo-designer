@@ -30,7 +30,10 @@ module.exports = React.createClass({
 
       <div className="book-messge">
         <p>
-          Each page in your book has an id (like a nickname).  That is how I match a choice with another page.
+          Welcome to the <b>Choose your own adventure story designer</a>.  You can create stories and share them with your friends.
+        </p>
+        <p>
+          Each page in your book has an id (like a nickname).  That is how you match a choice with another page.
         </p>
         <p>
           When you make new pages, you will see links on the left to edit the page.
