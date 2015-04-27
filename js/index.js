@@ -105,6 +105,8 @@ function render(component) {
 
 var testing = false;
 function testBook() {
+  alert('type "q" to return to the editor');
+
   testing = true;
   document.getElementById('designer').style.display = 'none';
   React.unmountComponentAtNode(document.getElementById('designer'));
