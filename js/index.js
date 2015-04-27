@@ -8,6 +8,10 @@ var Backbone = require('backbone');
 var _ = require('underscore');
 require('./style.css');
 
+var save = _.throttle(function() {
+  localStorage.setItem('editor', JSON.stringify(data));
+}, 3000);
+
 var data = localStorage.getItem('editor')
 data = JSON.parse(data || '{"title": "", "pages": {"main": {"transitions": []}}}');
 if (!data.variables) {
@@ -103,10 +107,6 @@ function render(component) {
   </div>
   React.render(toRender, document.body);
 }
-
-var save = _.throttle(function() {
-  localStorage.setItem('editor', JSON.stringify(data));
-}, 3000);
 
 
 var Router = Backbone.Router.extend({
