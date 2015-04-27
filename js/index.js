@@ -137,16 +137,19 @@ function testBook() {
 }
 
 function wrapBookForTesting() {
-  var _book = _.clone(data);
-  if (_book.setup) {
-    var func = '(function() {\n' + _book.setup + '\n}).call(this)';
+  var _book = {
+    title: data.title,
+    pages: {}
+  };
+  if (data.setup) {
+    var func = '(function() {\n' + data.setup + '\n}).call(this)';
     _book.setup = function() {
       eval(func);
     }
   }
 
-  _.each(_book.pages, function(page, id) {
-    var _page = _.clone(page);
+  _.each(data.pages, function(page, id) {
+    var _page = {}
     _page.choices = page.transitions;
     _page.content = function() {
       if (page.onShow) {
@@ -162,7 +165,7 @@ function wrapBookForTesting() {
     }
 
     if (page.onLeave) {
-      var leaveFunc = '(function() {\n' + _page.onLeave + '\n}).call(this, id)';
+      var leaveFunc = '(function() {\n' + page.onLeave + '\n}).call(this, id)';
       _page.choiceMade = function(id) {
         eval(leaveFunc);
       }

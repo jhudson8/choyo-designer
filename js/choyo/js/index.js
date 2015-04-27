@@ -20,7 +20,6 @@ function checkForBook() {
   context = engine.reset(book);
 
   document.body.innerHTML = '<div id="book" class="book"></div>';
-
   var Router = Backbone.Router.extend({
     routes: {
       'page/:pageId': 'showPage',

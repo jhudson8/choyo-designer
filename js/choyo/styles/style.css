@@ -101,7 +101,7 @@ body {
   margin: auto;
 }
 
-#book input:not([type]), input[type="text"] {
+#book input:not([type]), #book input[type="text"] {
   width: 80px;
   font-size: 1em;
 }
