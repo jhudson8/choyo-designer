@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>The Bomb!</title>
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Walter%20Turncoat">
+    <script src="https://fb.me/JSXTransformer-0.13.2.js"></script>
+    <script type="text/jsx">
+
+
+
+// BOOK CODE IS BELOW
+
+book = function(React) {
+	return {
+
+		title: "The Bomb!",
+
+		setup: function() {
+// the default name if your character
+this.name = 'Billy';
+
+// the randomly generated bomb code
+this.correctBombCode = this.randomNumber(1000, 9999);
+
+		},
+		pages: {
+			"main": {
+				content: function() {
+					return <div>
+After <input type="text" ref="name" defaultValue={this.name}/> enters the room, he hears a strange ticking sound.  After investigating, he sees a bomb hidden behind the door!<br/>
+
+					</div>;
+				},
+				choices: [
+					"[diffuseBomb] Try to diffuse the bomb",
+					"[lookAround] Look around"
+				]
+			},
+			"diffuseBomb": {
+				content: function() {
+					return <div>
+{this.name} tries to diffuse the bomb by entering the code or cutting one of the wires.  As he makes the decision, {this.name}'s life flashes before his eyes.<br/>
+<br/>
+Bomb code:  <input type="text" ref="bombCode" defaultValue={this.bombCode}/>
+					</div>;
+				},
+				choiceMade: function(id) {
+if (id == "bombCodeEntered") {
+  if (!this.bombCode) {
+    alert("don't you want to enter a bomb code first?");
+    // don't go anywhere
+    return false;
+  }
+
+  if (this.bombCode == this.correctBombCode) {
+    // the correct bomb code was entered
+    return "bombDiffused";
+  } else {
+    // a bad code was entered so... EXPLODE
+    this.explodeReason = "entered the wrong code and the bomb exploded";
+    return "bombExploded";
+  }
+}
+				},
+				choices: [
+					"[bombCodeEntered] Enter bomb code",
+					"[bombExploded] Cut the red wire",
+					"[bombExploded] Cut the green wire",
+					"[bombDiffused] Cut the blue wire",
+					"[lookAround] Look around the room"
+				]
+			},
+			"lookAround": {
+				content: function() {
+// 35% chance they will find the bomb code
+if (Math.random() < 0.35) {
+  this.thingToFind = "A piece of paper with " + this.correctBombCode + " written on it";
+} else {
+  // find a random thing that has no value
+  var thingToFind = this.oneOf([
+    "pair of shoes",
+    "cereal box",
+    "picture on the wall",
+    "television remote control",
+    "newspaper"
+  ]);
+  this.thingToFind = "an uninteristing " + thingToFind;
+}
+
+					return <div>
+{this.name} finds {this.thingToFind}.
+					</div>;
+				},
+				choiceMade: function(id) {
+// the "id" value is the page id that the user chose
+if (id === "lookAround") {
+
+  // there is a 25% chance they trigger the bomb
+  if (Math.random() < 0.25) {
+
+    // change the selected next page and go to the bomb exploded page
+    this.explodeReason = "was was walking around and accidentally tripped the motion sensors on the bomb and it exploded.  This might not turn out the same way if he tried again.."
+    return "bombExploded";
+  }
+}
+
+				},
+				choices: [
+					"[lookAround] Look around some more",
+					"[diffuseBomb] Try to diffuse the bomb"
+				]
+			},
+			"bombDiffused": {
+				content: function() {
+					return <div>
+{this.name} diffused the bomb and saved the day!<br/>
+<br/>
+The end.
+					</div>;
+				},
+				choices: [
+
+				]
+			},
+			"bombExploded": {
+				content: function() {
+					return <div>
+{this.name} {this.explodeReason}.<br/>
+<br/>
+The end.
+					</div>;
+				},
+				choices: [
+
+				]
+			}
+		}
+	}
+}
+
+
+// END OF BOOK CODE
+
+
+
+    </script>
+  </head>
+  <body></body>
+  <script src="http://jhudson8.github.io/choyo/app.js"></script>
+</html>
+
