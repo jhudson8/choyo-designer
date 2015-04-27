@@ -46,7 +46,7 @@ module.exports = React.createClass({
           When you are happy with your book and want to share it or you just want to test it out
         </p>
         <p>
-          <button type="button" className="view-start-page" onClick={this.link('editor/page/main')}>Share my story</button>
+          <button type="button" className="view-start-page" onClick={this.link('editor/output')}>Share my story</button>
         </p>
         <p>
           To see an example story (and what you can do if you want to program just a little bit), check out <a href="http://jhudson8.github.io/choyo-designer/story-thebomb.html" target="_blank">The Bomb!</a>.
