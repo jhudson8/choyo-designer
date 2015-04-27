@@ -35,7 +35,7 @@ body {
 }
 
 .body-content {
-  margin-left: 150px;
+  margin-left: 168px;
 }
 
 .page-content {
@@ -199,4 +199,32 @@ h4 {
   margin-top: -6px;
   padding-bottom: 18px;
   color: #999;
+}
+
+.code {
+  font-family: ‘Courier New’, Courier, monospace;
+  background-color: #ddd;
+  padding: 8px;
+}
+
+pre {
+    white-space: pre-wrap; /* CSS3 */
+    white-space: -moz-pre-wrap; /* Mozilla, post millennium */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+
+.code-block-hint {
+  margin-top: 8px;
+  background-color: #EEE;
+  padding: 8px;
+  border-left: solid 1px #CCC;
+  border-right: solid 1px #CCC;
+  border-bottom: solid 1px #CCC;
+  max-width: 600px;
+}
+
+.btn-info {
+  background-color: #5bc0de;
 }

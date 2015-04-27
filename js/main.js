@@ -18,18 +18,19 @@ module.exports = React.createClass({
     var data = this.props.data;
 
     return <div>
-      <h2>Create your own choose your own adventure book</h2>
+      <h2>Choose your own adventure story builder</h2>
 
       <FormField ref="title" label="Book Title" name="title" defaultValue={data.title} onChange={this.saveTitle}/>
 
       <CodeBlock label="book style (CSS)" content={data.style} save={this.saveStyle}
-        validate={false} hide={!this.state.advanced}/>
+        validate={false} hide={!this.state.advanced} hint={function() { return <StyleHelp/> ;}}/>
 
-      <CodeBlock label="when story begins" content={data.setup} save={this.saveSetup} hide={!this.state.advanced}/>
+      <CodeBlock label="when story begins" content={data.setup} save={this.saveSetup}
+        hide={!this.state.advanced} hint={function() { return <StoryHelp/>; }}/>
 
       <div className="book-messge">
         <p>
-          Each page in your book has an id (like a nickname) and that is how you will match a choice with another page.
+          Each page in your book has an id (like a nickname).  That is how I match a choice with another page.
         </p>
         <p>
           When you make new pages, you will see links on the left to edit the page.
@@ -58,7 +59,6 @@ module.exports = React.createClass({
   },
 
   saveTitle: function() {
-    debugger;
     this.refs.title.serialize(this.props.data);
     this.props.save();
   },
@@ -132,3 +132,51 @@ var Variables = React.createClass({
 
   }
 });
+
+var StyleHelp = React.createClass({
+  render: function() {
+    return <div>
+      <p>
+        Add any <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="css">CSS</a> content.
+        The class name for the cover page is <b>cover</b> and <b>page</b> for each page.
+        Also, each page element has an id matching the page id.
+      </p>
+      <p>
+        For example, to set a cover page image
+<pre className="code">
+.cover {'{\n'}
+{'  '}background-image: url(http://the/image/url) !important;{'\n'}
+{'  '}background-size: 100% 100%;{'\n'}
+{'}'}
+</pre>
+      </p>
+    </div>
+  }
+});
+
+var StoryHelp = React.createClass({
+  render: function() {
+    return <div>
+      <p>
+        Use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide" target="javascript">javascript</a> to
+        set up variables that can be used in your story to make it different each time you read it.
+        <br/>
+        Use "this.variableName" to set one.
+      </p>
+      <p>
+        For example, if I wanted to create a 4 digit random code to a safe
+<pre className="code">
+this.safeCode = this.randomNumber(1000, 9999);
+</pre>
+      </p>
+      <p>
+          Or, to set a car paint color (the variable name can only have letters from the alphabet).
+<pre className="code">
+this.paintColor = "green";
+</pre>
+Look at the code for your pages to see examples of how these variables can be used and changed.
+      </p>
+    </div>
+  }
+});
+

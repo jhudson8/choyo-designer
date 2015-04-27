@@ -11,6 +11,12 @@ module.exports = React.createClass({
       return <div></div>;
     }
 
+    var showHint = this.state.hintShown ?
+      <button type="button" className="btn-info" onClick={this.toggleHint}>Hide hints</button> :
+      <button type="button" className="btn-info" onClick={this.toggleHint}>Show hints</button>
+    var hint = this.state.hintShown ?
+      <div className="code-block-hint">{this.props.hint()}</div> : undefined;
+
     if (this.state.visible) {
       return <div className="code-block-container">
         <div className="open-code-block">
@@ -19,13 +25,21 @@ module.exports = React.createClass({
           <br/>
           <button type="button" className="btn-save" onClick={this.save}>Save</button>
           <button type="button" onClick={this.toggleContent}>Cancel</button>
+          {showHint}
         </div>
+        {hint}
       </div>;
     } else {
       return <div className="code-block-container">
         <button className="closed-code-block" onClick={this.toggleContent}>code: {this.props.label}</button>
       </div>
     }
+  },
+
+  toggleHint: function() {
+    this.setState({
+      hintShown: !this.state.hintShown
+    });
   },
 
   save: function(ev) {

@@ -19,13 +19,21 @@ module.exports = React.createClass({
 
     var contentError = this.state.contentError && <div className="content-error">{this.state.contentError}</div>
 
-    var codeBlocks;
+    var codeBlocks, contentHintButton, contentHint;
     if (this.state.advanced) {
+      if (this.state.contentHintShowing) {
+        contentHintButton = <button type="button" className="btn-info" onClick={this.toggleContentHint}>Hide hints</button>
+        contentHint = <div className="code-block-hint"><ContentHint/></div>
+      } else {
+        contentHintButton = <button type="button" className="btn-info" onClick={this.toggleContentHint}>Show hints</button>
+      }
+
+
       codeBlocks = <div>
         <h4>Code and Variables</h4>
-        <CodeBlock label="When page is shown" content={page.onShow} save={this.saveOnShow}/>
+        <CodeBlock label="When page is shown" content={page.onShow} save={this.saveOnShow} hint={function() { return <PageShownHint/>; }}/>
         <CodeBlock label="When choice is made" content={page.onLeave} save={this.saveOnLeave}
-          params={['id']}/>
+          params={['id']} hint={function() { return <PageLeaveHint/> }}/>
       </div>
     }
 
@@ -35,6 +43,10 @@ module.exports = React.createClass({
       <br/>
       <textarea ref="content" className="page-content" defaultValue={formatContent(page.content)} onChange={this.save}/>
       {contentError}
+      <br/>
+      {contentHintButton}
+      {contentHint}
+
       <div className="add-new-page">
         {deletePage}
       </div>
@@ -51,6 +63,18 @@ module.exports = React.createClass({
         <label htmlFor="advanced">show advanced features</label>
       </p>
     </div>
+  },
+
+  toggleContentHint: function() {
+    this.setState({
+      contentHintShowing: !this.state.contentHintShowing
+    });
+  },
+
+  contentHintShowing: function() {
+    this.setState({
+      contentHintShowing: true
+    })
   },
 
   showAdvancedFeatures: function(ev) {
@@ -264,4 +288,95 @@ var Transition = React.createClass({
     this.props.transition.label = ev.currentTarget.value;
     this.props.save();
   }
-})
+});
+
+var ContentHint = React.createClass({
+  render: function() {
+    return <div className="code-block-hint">
+      <p>
+        You can create text fields or use variables to create a unique experience for every reader.
+      </p>
+      <p>
+        To show a variable, use <b>{'{'}variableName{'}'}</b>
+<pre className="code">
+He was driving a {'{'}paintColor{'}'} car.
+</pre>
+      </p>
+      <p>
+        To create a text box which will allow the reader to update a variable, use <b>{'{<'}variableName{'>}'}</b>
+<pre className="code">
+He painted the car {'{<'}paintColor{'>}'}.
+</pre>
+      </p>
+    </div>
+  }
+});
+
+var PageShownHint = React.createClass({
+  render: function() {
+    return <div>
+      <p>
+        Use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide" target="javascript">javascript</a>
+        &nbsp; to add or remove choices based on variables or for random things to happen.  Use <b>this.variableName</b> to refer to variables.
+      </p>
+      <p>
+        To add a new choice if the <b>paintColor</b> is "green" use the <b>addChoice command</b>
+<pre className="code">
+if (this.paintColor == "green") {'{\n'}
+{'  '}this.addChoice("the page id", "choice button label");{'\n'}
+{'}'}
+</pre>
+      </p>
+      <p>
+        To remove a choice based purely on a random condition use the <b>removeChoice command</b>
+<pre className="code">
+// the random number will be between 0 and 1
+if (Math.random() {'>'} 0.5) {'{\n'}
+{'  '}this.removeChoice("the page id");{'\n'}
+{'}'}
+</pre>
+      </p>
+    </div>
+  }
+});
+
+var PageLeaveHint = React.createClass({
+  render: function() {
+    return <div>
+      <p>
+        Here you can use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide" target="javascript">javascript</a>
+        &nbsp; to use variables to remember that a specific choice was made or that this page was shown.
+      </p>
+      <p>
+        A special <b>id</b> value refers to the page id of the selected choice.
+      </p>
+      <p>
+        To remember (set a variable) when the reader makes a choice to paint the car (assuming the next chosen page is <b>paintCar</b>)
+<pre className="code">
+if (id == "paintCar") {'{\n'}
+{'  '}this.carPainted = true;{'\n'}
+{'}'}
+</pre>
+      </p>
+      <p>
+        And, to change the next page to be shown to a different page id, you can return a different page id.
+        <br/>
+        Here we have a 50% change to show the <b>flatTire</b> page when the reader tries to view the <b>driveCar</b> page (<b>&&</b> means <b>and</b> and <b>||</b> means <b>or</b>)
+<pre className="code">
+if (id == "driveCar" && Math.random() {'>'} 0.5) {'{\n'}
+{'  '}return "flatTire";{'\n'}
+{'}'}
+</pre>
+      </p>
+      <p>
+        To remove a choice based purely on a random condition use the <b>removeChoice command</b>
+<pre className="code">
+// the random number will be between 0 and 1{'\n'}
+if (Math.random() {'>'} 0.5) {'{\n'}
+{'  '}this.removeChoice("the page id");{'\n'}
+{'}'}
+</pre>
+      </p>
+    </div>
+  }
+});
