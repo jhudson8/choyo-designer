@@ -7,7 +7,8 @@ module.exports = React.createClass({
 
     return <div className="form-field">
       <label className="label">{this.props.label}</label>
-      <input ref="input" type="text" name={this.props.name} defaultValue={this.props.defaultValue}/>
+      <input ref="input" type="text" name={this.props.name}
+        defaultValue={this.props.defaultValue} onChange={this.props.onChange}/>
     </div>;
   },
 
