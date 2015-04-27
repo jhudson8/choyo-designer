@@ -37,8 +37,10 @@ module.exports = React.createClass({
       </div>
     }
 
+    var pageTitle = this.props.id === 'main' ? 'Start Page' : ('Page: ' + this.props.id);
+
     return <div className="page-details">
-      <h2>Page: "{this.props.id}"</h2>
+      <h2>{pageTitle}</h2>
       Enter your page contents below
       <br/>
       <textarea ref="content" className="page-content" defaultValue={formatContent(page.content)} onChange={this.save}/>
