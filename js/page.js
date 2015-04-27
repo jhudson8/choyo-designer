@@ -31,8 +31,8 @@ module.exports = React.createClass({
 
       codeBlocks = <div>
         <h4>Code and Variables</h4>
-        <CodeBlock label="When page is shown" content={page.onShow} save={this.saveOnShow} hint={function() { return <PageShownHint/>; }}/>
-        <CodeBlock label="When choice is made" content={page.onLeave} save={this.saveOnLeave}
+        <CodeBlock label="When page is shown" book={this.props.book} content={page.onShow} save={this.saveOnShow} hint={function() { return <PageShownHint/>; }}/>
+        <CodeBlock label="When choice is made" book={this.props.book} content={page.onLeave} save={this.saveOnLeave}
           params={['id']} hint={function() { return <PageLeaveHint/> }}/>
       </div>
     }
@@ -251,7 +251,7 @@ function resolveContent(content) {
   var inputRegex = /\{\s*<([^>]+)>\}/g;
   content = content.replace(inputRegex, function(stuff) {
     var name = stuff.replace(/[\{\}<>]/g, '');
-    return '<input type="text" ref="' + name + '"/>';
+    return '<input type="text" ref="' + name + '" defaultValue={this.' + name + '}/>';
   });
 
   // handle this....

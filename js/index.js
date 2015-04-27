@@ -57,7 +57,7 @@ function showPage(pageId) {
   }
 
   render(<PageView id={pageId} page={pageData} fromTransitions={getTransitions(pageId)}
-    save={save} newPage={newPage} deletePage={_deletePage}/>);
+    save={save} newPage={newPage} deletePage={_deletePage} book={data}/>);
 }
 
 function showMain() {
@@ -81,7 +81,7 @@ function getTransitions(pageId) {
 function newPage() {
   var pageId = prompt('What is the page id?');
   if (pageId) {
-    doAddPage(pageId.replate(/\s/g, '_'));
+    doAddPage(pageId.replace(/\s/g, '_'));
   } else {
     alert('I couldn\'t make a new page because you didn\'t enter a page id');
   }

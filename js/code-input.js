@@ -47,6 +47,17 @@ module.exports = React.createClass({
     var params = this.props.params || []
     var value = this.refs.input.getDOMNode().value;
 
+    if (this.props.book && this.props.book.setup) {
+      var setupFunc = '(function() {\n' + this.props.book.setup + '\n}).call(context);';
+      try {
+        eval(setupFunc)
+      } catch (e) {
+        // swallow
+        console.log(e);
+      }
+      
+    }
+
     if (this.props.validate !== false) {
       var fullFunc = '(function(';
       fullFunc += _.map(params, function(param) { return param; }).join(',');

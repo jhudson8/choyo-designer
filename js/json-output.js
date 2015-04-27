@@ -11,7 +11,7 @@ module.exports = React.createClass({
     return <div>
       Copy and save the contents below (so you can restore them later).
       <br/>
-      <textarea className="output" value={JSON.stringify(this.props.data) + '\n'} readOnly={true}/>
+      <textarea className="json-output" value={JSON.stringify(this.props.data) + '\n'} readOnly={true}/>
       <br/>
       <br/>
       <br/>

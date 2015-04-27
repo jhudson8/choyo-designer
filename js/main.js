@@ -36,7 +36,13 @@ module.exports = React.createClass({
           When you make new pages, you will see links on the left to edit the page.
         </p>
         <p>
-          <button type="button" className="view-start-page" onClick={this.viewStartPage}>View your start page</button>
+          <button type="button" className="view-start-page" onClick={this.link('editor/page/main')}>View your start page</button>
+        </p>
+        <p>
+          When you are happy with your book and want to share it or you just want to test it out
+        </p>
+        <p>
+          <button type="button" className="view-start-page" onClick={this.link('editor/page/main')}>Share my story</button>
         </p>
         <p>
           <br/>
@@ -54,8 +60,10 @@ module.exports = React.createClass({
     });
   },
 
-  viewStartPage: function() {
-    Backbone.history.navigate('#editor/page/main', true);
+  link: function(route) {
+    return function() {
+      Backbone.history.navigate('#' + route, true);
+    }
   },
 
   saveTitle: function() {
@@ -126,10 +134,6 @@ var Variables = React.createClass({
       this.props.variables[data.addNewName] = data.addNewValue;
       this.forceUpdate();
     }
-  },
-
-  onSave: function() {
-
   }
 });
 
