@@ -174,7 +174,7 @@ var Transitions = React.createClass({
     }
 
     return <div className="page-transitions">
-      <h4>Page chioces</h4>
+      <h4>Page choices</h4>
       {transitions}
       {addChoice}
       {fromTransitions}

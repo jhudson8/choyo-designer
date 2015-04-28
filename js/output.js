@@ -106,7 +106,7 @@ function fullPageContent(code, title, style) {
 
   rtn = rtn + '  </head>\n' +
     '  <body></body>\n' +
-    '  <script src="http://jhudson8.github.io/choyo/app.js"></script>\n' +
+    '  <script src="//jhudson8.github.io/choyo/app.js"></script>\n' +
     '</html>\n';
   return rtn;
 }
