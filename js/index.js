@@ -91,6 +91,7 @@ function startOver() {
   if (confirm('Are you sure you want to start over?')) {
     data = JSON.parse(DEFAULT_DATA);
     save();
+    React.unmountComponentAtNode(document.getElementById('designer'));
     showMain();
   }
 }
@@ -170,7 +171,7 @@ function wrapBookForTesting() {
         eval(showFunc);
       }
 
-      var componentCode = require('react-tools').transform('<div>' + page.content + '</div>');
+      var componentCode = require('react-tools').transform('<div>' + (page.content || '') + '</div>');
       var _component;
       var componentFunc = '(function() {\n_component = ' + componentCode + ' }).call(this);';
       eval(componentFunc);
