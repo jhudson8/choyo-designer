@@ -174,9 +174,11 @@ function wrapBookForTesting() {
     }
 
     if (page.onLeave) {
-      var leaveFunc = '(function() {\n' + page.onLeave + '\n}).call(this, id)';
+      var leaveFunc = 'leaveRtn = (function() {\n' + page.onLeave + '\n}).call(this, id)';
       _page.choiceMade = function(id) {
+        var leaveRtn;
         eval(leaveFunc);
+        return leaveRtn;
       }
     }
     _book.pages[id] = _page;
@@ -203,11 +205,11 @@ document.body.onkeypress = function(e) {
   if (!testing) {
     return;
   }
-  document.getElementById('designer').style.display = 'block';
   e = e || window.event;
   var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
   if (charCode === 113) {
     // "q"
+    document.getElementById('designer').style.display = 'block';
     testing = false;
     React.unmountComponentAtNode(document.getElementById('book'));
     Backbone.history.loadUrl();
