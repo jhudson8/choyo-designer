@@ -205,15 +205,14 @@ function prepareContent(content, context) {
   if (!_.isString(content)) {
     return content;
   }
-
-  return content.replace(/\{this\.[^\}]*\}/g, function(val) {
-  val = val.substring(6).substring(0, val.length-7);
-  var defaultVal;
-  var match = val.match(/([^\s]*) or (.+)$/);
-  if (match) {
-    val = match[1];
-      defaultVal = match[2];
-  }
-  return context[val] || defaultVal || '';
+  return content.replace(/\{[^\}]*\}/g, function(val) {
+    val = val.substring(1).substring(0, val.length-2);
+    var defaultVal;
+    var match = val.match(/([^\s]*) or (.+)$/);
+    if (match) {
+      val = match[1];
+        defaultVal = match[2];
+    }
+    return context[val] || defaultVal || '';
   });
 }
