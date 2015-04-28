@@ -117,8 +117,12 @@ function testBook() {
   alert('type "q" to return to the editor');
 
   testing = true;
-  document.getElementById('designer').style.display = 'none';
-  React.unmountComponentAtNode(document.getElementById('designer'));
+  var el = document.getElementById('designer');
+  React.unmountComponentAtNode(el);
+  el.style.display = 'none';
+  el.innerHTML = '';
+
+  document.getElementById('designer')
 
   var book = wrapBookForTesting();
   var engine = require('choyo/js/engine');
@@ -211,7 +215,10 @@ document.body.onkeypress = function(e) {
     // "q"
     document.getElementById('designer').style.display = 'block';
     testing = false;
-    React.unmountComponentAtNode(document.getElementById('book'));
+    var el = document.getElementById('book');
+    React.unmountComponentAtNode(el);
+    el.innerHTML = '';
+
     Backbone.history.loadUrl();
   }
 };
