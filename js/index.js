@@ -121,7 +121,7 @@ function testBook() {
   React.unmountComponentAtNode(document.getElementById('designer'));
 
   var book = wrapBookForTesting();
-  var engine = require('./choyo/js/engine');
+  var engine = require('choyo/js/engine');
   var context = engine.reset();
   context.save = function() {};
 
@@ -160,7 +160,7 @@ function wrapBookForTesting() {
   _.each(data.pages, function(page, id) {
     var _page = {}
     _page.choices = page.transitions;
-    _page.content = function() {
+    _page.content = function(React) {
       if (page.onShow) {
         var showFunc = '(function() {\n' + page.onShow + '\n}).call(this)';
         eval(showFunc);
