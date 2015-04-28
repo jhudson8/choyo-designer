@@ -39,6 +39,10 @@ body {
   padding: 0;
 }
 
+#designer .nav li {
+  padding-left: 6px;
+}
+
 #designer .body-content {
   margin-left: 168px;
 }

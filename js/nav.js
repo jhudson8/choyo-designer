@@ -26,6 +26,7 @@ module.exports = React.createClass({
         <li><a className="page-nav" href="#editor/page/main">Start Page</a></li>
         {pages}
       </ul>
+      <button className="btn" onClick={this.props.startOver}>Start over</button>
     </div>;
   },
 

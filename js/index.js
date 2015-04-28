@@ -7,8 +7,9 @@ var save = _.throttle(function() {
   localStorage.setItem('editor', JSON.stringify(data));
 }, 3000);
 
+var DEFAULT_DATA = '{"title": "", "pages": {"main": {"transitions": []}}}';
 var data = localStorage.getItem('editor')
-data = JSON.parse(data || '{"title": "", "pages": {"main": {"transitions": []}}}');
+data = JSON.parse(data || DEFAULT_DATA);
 if (!data.variables) {
   data.variables = {};
   save();
@@ -86,6 +87,14 @@ function newPage() {
   }
 }
 
+function startOver() {
+  if (confirm('Are you sure you want to start over?')) {
+    data = JSON.parse(DEFAULT_DATA);
+    save();
+    showMain();
+  }
+}
+
 function doAddPage(pageId) {
   data.pages[pageId] = {transitions: []};
   save();
@@ -97,7 +106,7 @@ function render(component) {
 
   var Nav = require('./nav');
   var toRender = <div className="body-container">
-    <nav><Nav pages={data.pages} addPage={newPage} testBook={testBook}/></nav>
+    <nav><Nav pages={data.pages} addPage={newPage} startOver={startOver} testBook={testBook}/></nav>
     <div className="body-content">{component}</div>
   </div>
   React.render(toRender, document.getElementById('designer'));
