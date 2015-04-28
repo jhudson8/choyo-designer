@@ -1,6 +1,3 @@
-var React = require('react');
-var _ = require('underscore');
-var Backbone = require('backbone');
 var FormField = require('./form-field');
 var CodeBlock = require('./code-input');
 

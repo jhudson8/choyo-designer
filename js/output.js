@@ -1,6 +1,3 @@
-var React = require('react');
-var _ = require('underscore');
-
 module.exports = React.createClass({
   getInitialState: function() {
     return {

@@ -1,7 +1,4 @@
-var React = require('react'),
-    Backbone = require('backbone'),
-    _ = require('underscore'),
-    FormField = require('./form-field'),
+var FormField = require('./form-field'),
     CodeBlock = require('./code-input');
 
 module.exports = React.createClass({
@@ -29,6 +26,7 @@ module.exports = React.createClass({
         hide={!this.state.advanced} hint={function() { return <StoryHelp/>; }}/>
 
       <div className="book-messge">
+        <h3>Get Started</h3>
         <p>
           Welcome to the <b>Choose your own adventure story designer</b>.  You can create stories and share them with your friends.
         </p>
@@ -36,7 +34,7 @@ module.exports = React.createClass({
           Each page in your book has an id (like a nickname).  That is how you match a choice with another page.
         </p>
         <p>
-          When you make new pages, you will see links on the left to edit the page.
+          When you make new pages, you will see links on the left under <b>Your Pages</b> to edit the page.
         </p>
         <p>
           <button type="button" className="view-start-page" onClick={this.link('editor/page/main')}>View your start page</button>
@@ -46,16 +44,18 @@ module.exports = React.createClass({
           You can always come back here by clicking <b>Edit cover page</b> on the left of the screen.
         </p>
         <p>
-          When you are happy with your book and want to share it or you just want to test it out
+          When you are happy with your book and want to share it, click the <b>Share my story</b> button on the left.
         </p>
-        <p>
-          <button type="button" className="view-start-page" onClick={this.link('editor/output')}>Share my story</button>
-        </p>
+
+        <h3>Example Story</h3>
         <p>
           To see an example story (and what you can do if you want to program just a little bit), check out <a href="http://jhudson8.github.io/choyo-designer/story-thebomb.html" target="_blank">The Bomb!</a>.
         </p>
         <p>
-          To see how "The Bomb!" was created, click <button type="button" className="view-start-page" onClick={this.link('editor/json-output')}>Backup / Restore</button> and, in the restore section at the bottom, paste in <a href="http://jhudson8.github.io/choyo-designer/story-thebomb-src.json">this stuff</a>.  Then click "Restore" (Make sure to "show advanced features" (see bottom here and when looking at the pages) to see the programming.
+          To see how "The Bomb!" was created, click <b>Backup / Restore</b> and, in the restore section at the bottom, paste in <a href="http://jhudson8.github.io/choyo-designer/story-thebomb-src.json">this stuff</a>.
+        </p>
+        <p>
+          Then click "Restore".  To see some of the light programming, make sure to "show advanced features" (see bottom here and when looking at the pages).
         </p>
         <p>
           <br/>

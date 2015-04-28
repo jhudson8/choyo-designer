@@ -1,6 +1,6 @@
-var React = require('react');
-var Backbone = require('backbone');
-var _ = require('underscore');
+global.React = require('react');
+global.Backbone = require('backbone');
+global._ = require('underscore');
 require('./style.css');
 
 var save = _.throttle(function() {
@@ -174,7 +174,7 @@ function wrapBookForTesting() {
       var _component;
       var componentFunc = '(function() {\n_component = ' + componentCode + ' }).call(this);';
       eval(componentFunc);
-      return _component;
+      return _component || <div></div>;
     }
 
     if (page.onLeave) {
