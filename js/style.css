@@ -21,7 +21,7 @@ body {
 
 #designer .nav-container button {
   margin-top: 10px;
-    width: 90%;
+  width: 90%;
 }
 
 #designer .view-start-page {
@@ -54,7 +54,8 @@ body {
 }
 
 #designer button {
-  margin-right: 18px;
+  margin-right: 6px;
+  margin-left: 6px;
 }
 
 #designer .form-field {
@@ -117,7 +118,7 @@ body {
 #designer button.closed-code-block {
   background-color: #aa6708;
   color: #FFF;
-  width: 220px;
+  width: 260px;
   position: relative;
 }
 
@@ -186,11 +187,13 @@ body {
 }
 
 #designer .function-input {
+  padding: 6px;
+  display: block;
   width: 100%;
-  max-width: 600px;
+  max-width: 750px;
   height: 12em;
   font-family: ‘Courier New’, Courier, monospace;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 #designer h4 {

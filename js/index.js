@@ -153,7 +153,7 @@ function wrapBookForTesting() {
     _page.choices = page.transitions;
     _page.content = function() {
       if (page.onShow) {
-        var showFunc = '(function() {\n' + _page.onShow + '\n}).call(this)';
+        var showFunc = '(function() {\n' + page.onShow + '\n}).call(this)';
         eval(showFunc);
       }
 

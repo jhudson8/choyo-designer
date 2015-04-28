@@ -15,8 +15,8 @@ module.exports = React.createClass({
 
     return <div className="nav-container">
       <div className="nav-links">
-        <button className="btn test-book" onClick={this.props.testBook}>Test Book</button>
-        <button className="btn" onClick={link('editor')}>Edit Cover Page</button>
+        <button className="btn test-book" onClick={this.props.testBook}>Test my story</button>
+        <button className="btn" onClick={link('editor')}>Edit cover page</button>
         <button type="button" onClick={this.props.addPage}>Add new page</button>
         <button onClick={link('editor/output')}>Share my story</button>
         <button className="btn" onClick={link('editor/json-output')}>Backup / Restore</button>
