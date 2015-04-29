@@ -150,17 +150,96 @@ The end.
 
     </script>
     <style>
+@-webkit-keyframes explode {
+  0% {
+  	transform: scale(1);
+  	opacity: 1;
+  }
+  40% {
+  	transform: scale(1);
+  	opacity: 1;
+  }
+  45% {
+  	transform: scale(6);
+  	opacity: 0;
+  }
+  50% {
+  	transform: scale(1);
+  }
+  80% {
+  	opacity: 0;
+  }
+  100% {
+  	opacity: 1;
+  }
+}
+
+@-moz-keyframes explode {
+  0% {
+  	transform: scale(1);
+  	opacity: 1;
+  }
+  40% {
+  	transform: scale(1);
+  	opacity: 1;
+  }
+  45% {
+  	transform: scale(6);
+  	opacity: 0;
+  }
+  50% {
+  	transform: scale(1);
+  }
+  80% {
+  	opacity: 0;
+  }
+  100% {
+  	opacity: 1;
+  }
+}
+
+@keyframes explode {
+  0% {
+  	transform: scale(1);
+  	opacity: 1;
+  }
+  40% {
+  	transform: scale(1);
+  	opacity: 1;
+  }
+  45% {
+  	transform: scale(6);
+  	opacity: 0;
+  }
+  50% {
+  	transform: scale(1);
+  }
+  80% {
+  	opacity: 0;
+  }
+  100% {
+  	opacity: 1;
+  }
+}
+
   .cover {
-	  background-color: #000;
-	  background-image: url(http://kdrestoration.com/wp-admin/images/FIre.jpg) !important;
-	  background-position: bottom center;
+	background-color: #000;
+	background-image: url(https://0.s3.envato.com/files/23184699/time-bomb-pr.jpg) !important;
+	background-position: top center;
+	background-repeat: no-repeat !important;
   }
   .cover h1, .cover-hint {
-	  color: #FFF !important;
+    color: #FFF !important;
+  }
+  .cover h1 {
+    padding-top: 30% !important;
+    -webkit-animation: explode 10s 1; /* Safari 4+ */
+    -moz-animation:    explode 10s 1; /* Fx 5+ */
+    animation:         explode 10s 1; /* IE 10+ */
   }
     </style>
   </head>
   <body></body>
-  <script src="http://jhudson8.github.io/choyo/app.js"></script>
+  <script src="//jhudson8.github.io/choyo/app.js"></script>
 </html>
 
