@@ -8,7 +8,7 @@ var save = _.throttle(function() {
 }, 3000);
 
 var DEFAULT_DATA = '{"title": "", "pages": {"main": {"transitions": []}}}';
-var data = localStorage.getItem('editor')
+var data = localStorage.getItem('editor');
 data = JSON.parse(data || DEFAULT_DATA);
 if (!data.variables) {
   data.variables = {};
@@ -27,7 +27,7 @@ function showJSONOutput() {
     save();
     alert('book restored');
     Backbone.history.navigate('editor/main', {trigger: true, replace: true});
-  }
+  };
   render(<Output data={data} restore={_restore}/>);
 }
 
@@ -109,7 +109,7 @@ function render(component) {
   var toRender = <div className="body-container">
     <nav><Nav pages={data.pages} addPage={newPage} startOver={startOver} testBook={testBook}/></nav>
     <div className="body-content">{component}</div>
-  </div>
+  </div>;
   React.render(toRender, document.getElementById('designer'));
 }
 
@@ -123,7 +123,7 @@ function testBook() {
   el.style.display = 'none';
   el.innerHTML = '';
 
-  document.getElementById('designer')
+  document.getElementById('designer');
 
   var book = wrapBookForTesting();
   var engine = require('choyo/js/engine');
@@ -159,11 +159,11 @@ function wrapBookForTesting() {
     var func = '(function() {\n' + data.setup + '\n}).call(this)';
     _book.setup = function() {
       eval(func);
-    }
+    };
   }
 
   _.each(data.pages, function(page, id) {
-    var _page = {}
+    var _page = {};
     _page.choices = page.transitions;
     _page.content = function(React) {
       if (page.onShow) {
@@ -176,7 +176,7 @@ function wrapBookForTesting() {
       var componentFunc = '(function() {\n_component = ' + componentCode + ' }).call(this);';
       eval(componentFunc);
       return _component || <div></div>;
-    }
+    };
 
     if (page.onLeave) {
       var leaveFunc = 'leaveRtn = (function() {\n' + page.onLeave + '\n}).call(this, id)';
@@ -184,7 +184,7 @@ function wrapBookForTesting() {
         var leaveRtn;
         eval(leaveFunc);
         return leaveRtn;
-      }
+      };
     }
     _book.pages[id] = _page;
   });
