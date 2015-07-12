@@ -125,7 +125,7 @@ var Transitions = React.createClass({
         self.props.transitions.splice(index, 1);
         self.forceUpdate();
       }
-      return <Transition transition={transition} delete={_delete} save={this.props.save}/>;
+      return <Transition key={transition.id + ':' + transition.label} transition={transition} delete={_delete} save={this.props.save}/>;
     }, this);
 
     if (transitions.length) {
