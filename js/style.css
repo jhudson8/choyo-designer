@@ -15,9 +15,10 @@ body {
 #designer .page-links {
   position: absolute;
   top:  0;
-  bottom:  20px;
+  bottom:  0;
   overflow-y: scroll;
   top: 230px;
+  margin-bottom: 20px;
 }
 
 #designer .nav-container {
