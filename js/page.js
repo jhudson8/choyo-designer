@@ -14,15 +14,15 @@ module.exports = React.createClass({
     var deletePage = this.props.id !== 'main' ?
       <button type="button" className="btn-delete" onClick={this.props.deletePage}>Delete this page</button> : undefined;
 
-    var contentError = this.state.contentError && <div className="content-error">{this.state.contentError}</div>
+    var contentError = this.state.contentError && <div className="content-error">{this.state.contentError}</div>;
 
     var codeBlocks, contentHintButton, contentHint;
     if (this.state.advanced) {
       if (this.state.contentHintShowing) {
-        contentHintButton = <button type="button" className="btn-info" onClick={this.toggleContentHint}>Hide hints</button>
-        contentHint = <div className="code-block-hint"><ContentHint/></div>
+        contentHintButton = <button type="button" className="btn-info" onClick={this.toggleContentHint}>Hide hints</button>;
+        contentHint = <div className="code-block-hint"><ContentHint/></div>;
       } else {
-        contentHintButton = <button type="button" className="btn-info" onClick={this.toggleContentHint}>Show hints</button>
+        contentHintButton = <button type="button" className="btn-info" onClick={this.toggleContentHint}>Show hints</button>;
       }
 
 
@@ -30,8 +30,8 @@ module.exports = React.createClass({
         <h4>Code and Variables</h4>
         <CodeBlock label="When page is shown" book={this.props.book} content={page.onShow} save={this.saveOnShow} hint={function() { return <PageShownHint/>; }}/>
         <CodeBlock label="When choice is made" book={this.props.book} content={page.onLeave} save={this.saveOnLeave}
-          params={['id']} hint={function() { return <PageLeaveHint/> }}/>
-      </div>
+          params={['id']} hint={function() { return <PageLeaveHint/>; }}/>
+      </div>;
     }
 
     var pageTitle = this.props.id === 'main' ? 'Start Page' : ('Page: ' + this.props.id);
@@ -61,7 +61,7 @@ module.exports = React.createClass({
         &nbsp;
         <label htmlFor="advanced">show advanced features</label>
       </p>
-    </div>
+    </div>;
   },
 
   toggleContentHint: function() {
@@ -73,7 +73,7 @@ module.exports = React.createClass({
   contentHintShowing: function() {
     this.setState({
       contentHintShowing: true
-    })
+    });
   },
 
   showAdvancedFeatures: function(ev) {
@@ -125,13 +125,13 @@ var Transitions = React.createClass({
         self.props.transitions.splice(index, 1);
         self.forceUpdate();
       }
-      return <Transition transition={transition} delete={_delete} save={this.props.save}/>
+      return <Transition transition={transition} delete={_delete} save={this.props.save}/>;
     }, this);
 
     if (transitions.length) {
       transitions = <div className="saved-transitions">
         {transitions}
-      </div>
+      </div>;
     } else {
       transitions = 'You haven\'t added any choices yet.  If you don\'t, this will be the last page of your story.';
     }
@@ -153,11 +153,11 @@ var Transitions = React.createClass({
             <button type="button" onClick={this.cancelAddChoice}>Cancel</button>
           </div>
         </form>
-      </div>
+      </div>;
     } else {
       addChoice = <div className="add-transition-action">
         <button type="button" className="btn-save" onClick={this.doAddChoice}>Add a new choice</button>
-      </div>
+      </div>;
     }
 
     var fromTransitions;
@@ -224,7 +224,7 @@ function formatContent(content) {
   // convert easy input fields
   var inputRegex = /<\s*input\s+[^\/>]*\/\s*>/g;
   content = content.replace(inputRegex, function(stuff) {
-    var ref = stuff.match(/ref\s*=\s*"([^"]+)"/)
+    var ref = stuff.match(/ref\s*=\s*"([^"]+)"/);
     if (ref) {
       return '{<' + ref[1] + '>}';
       } else {
@@ -307,7 +307,7 @@ He was driving a {'{'}paintColor{'}'} car.
 He painted the car {'{<'}paintColor{'>}'}.
 </pre>
       </p>
-    </div>
+    </div>;
   }
 });
 
@@ -335,7 +335,7 @@ if (Math.random() {'>'} 0.5) {'{\n'}
 {'}'}
 </pre>
       </p>
-    </div>
+    </div>;
   }
 });
 
@@ -376,6 +376,6 @@ if (Math.random() {'>'} 0.5) {'{\n'}
 {'}'}
 </pre>
       </p>
-    </div>
+    </div>;
   }
 });

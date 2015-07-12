@@ -1,4 +1,5 @@
 module.exports = React.createClass({
+  displayName: 'Nav',
   getInitialState: function() {
     return {
       filter: ''
@@ -13,7 +14,7 @@ module.exports = React.createClass({
     pages = _.compact(_.map(pages, function(page, id) {
       if (id !== 'main') {
         if (!filter || id.match(filterPattern)) {
-          return <li><a key={id} className="page-nav" href={'#editor/page/' + encodeURIComponent(id)}>{id}</a></li>;
+          return <li key={id}><a className="page-nav" href={'#editor/page/' + encodeURIComponent(id)}>{id}</a></li>;
         }
       }
     }));

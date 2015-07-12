@@ -1,4 +1,5 @@
 module.exports = React.createClass({
+  displayName: 'Output',
   getInitialState: function() {
     return {
       fullPage: true
@@ -45,7 +46,7 @@ function formatData(data) {
     if (data.setup) {
       rtn = rtn + '\n\t\tsetup: function() {\n' +
         data.setup + '\n' +
-        '\t\t},'
+        '\t\t},';
     }
 
     rtn += '\n\t\tpages: {\n';
@@ -71,7 +72,7 @@ function formatData(data) {
 
       rtn = rtn + '\t\t\t\tchoices: [\n';
     rtn = rtn + _.map(page.transitions, function(transition) {
-      return '\t\t\t\t\t"[' + transition.id + '] ' + transition.label.replace('"', '\\"') + '"'
+      return '\t\t\t\t\t"[' + transition.id + '] ' + transition.label.replace('"', '\\"') + '"';
     }).join(',\n');
     rtn = rtn + '\n\t\t\t\t]\n';
     return rtn;

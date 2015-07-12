@@ -103,14 +103,13 @@ function doAddPage(pageId) {
 }
 
 function render(component) {
-  React.render(<div/>, document.getElementById('designer'));
-
   var Nav = require('./nav');
   var toRender = <div className="body-container">
     <nav><Nav pages={data.pages} addPage={newPage} startOver={startOver} testBook={testBook}/></nav>
     <div className="body-content">{component}</div>
   </div>;
   React.render(toRender, document.getElementById('designer'));
+  window.scrollTo(0, 1);
 }
 
 var testing = false;

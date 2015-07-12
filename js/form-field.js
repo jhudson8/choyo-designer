@@ -1,4 +1,5 @@
 module.exports = React.createClass({
+  displayName: 'FormField',
 
   render: function() {
     var data = this.props.data;

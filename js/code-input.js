@@ -1,4 +1,5 @@
 module.exports = React.createClass({
+  displayName: 'CodeInput',
   getInitialState: function() {
     return {};
   },
@@ -10,7 +11,7 @@ module.exports = React.createClass({
 
     var showHint = this.state.hintShown ?
       <button type="button" className="btn-info" onClick={this.toggleHint}>Hide hints</button> :
-      <button type="button" className="btn-info" onClick={this.toggleHint}>Show hints</button>
+      <button type="button" className="btn-info" onClick={this.toggleHint}>Show hints</button>;
     var hint = this.state.hintShown ?
       <div className="code-block-hint">{this.props.hint()}</div> : undefined;
 
@@ -29,7 +30,7 @@ module.exports = React.createClass({
     } else {
       return <div className="code-block-container">
         <button className="closed-code-block" onClick={this.toggleContent}>code: {this.props.label}</button>
-      </div>
+      </div>;
     }
   },
 
@@ -41,13 +42,13 @@ module.exports = React.createClass({
 
   save: function(ev) {
     var context = this.pseudoContext();
-    var params = this.props.params || []
+    var params = this.props.params || [];
     var value = this.refs.input.getDOMNode().value;
 
     if (this.props.book && this.props.book.setup) {
       var setupFunc = '(function() {\n' + this.props.book.setup + '\n}).call(context);';
       try {
-        eval(setupFunc)
+        eval(setupFunc);
       } catch (e) {
         // swallow
         console.log(e);
@@ -65,7 +66,7 @@ module.exports = React.createClass({
       fullFunc += _.map(params, function(param) { return '"' + param + '"'; }).join(',');
       fullFunc += ')';
       try {
-        eval(fullFunc)
+        eval(fullFunc);
       } catch (e) {
         alert('error: ' + e.message);
         return;

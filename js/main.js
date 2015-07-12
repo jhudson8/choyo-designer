@@ -2,7 +2,7 @@ var FormField = require('./form-field'),
     CodeBlock = require('./code-input');
 
 module.exports = React.createClass({
-
+  displayName: 'Main',
   getInitialState: function() {
     return {};
   },
@@ -76,7 +76,7 @@ module.exports = React.createClass({
   link: function(route) {
     return function() {
       Backbone.history.navigate('#' + route, true);
-    }
+    };
   },
 
   saveTitle: function() {
@@ -121,7 +121,7 @@ var Variables = React.createClass({
         <label>{name}</label>
         <span className="variable-reference-value">{value}</span>
         <button type="btn-delete" onClick={_delete}>delete</button>
-      </div>
+      </div>;
     });
 
     return <div>
@@ -167,7 +167,7 @@ var StyleHelp = React.createClass({
 {'}'}
 </pre>
       </p>
-    </div>
+    </div>;
   }
 });
 

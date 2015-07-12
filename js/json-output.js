@@ -1,4 +1,6 @@
 module.exports = React.createClass({
+  displayName: 'JSONOutput',
+
   getInitialState: function() {
     return {
       fullPage: false
