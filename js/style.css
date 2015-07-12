@@ -8,6 +8,10 @@ body {
   margin: 16px;
 }
 
+#designer h2 {
+  margin-top: 0;
+}
+
 #designer .body-container {
   position: relative;
 }
@@ -18,11 +22,13 @@ body {
   bottom:  0;
   overflow-y: scroll;
   top: 230px;
+}
+
+#designer .page-links .btn {
   margin-bottom: 20px;
 }
 
 #designer .nav-container {
-  position: absolute;
   height: 100%;
   width: 150px;
   overflow-x: none;
@@ -59,6 +65,8 @@ body {
 }
 
 #designer .body-content {
+  position: absolute;
+  top: 20px;
   margin-left: 168px;
 }
 
