@@ -40,7 +40,7 @@ module.exports = React.createClass({
       <h2>{pageTitle}</h2>
       Enter your page contents below
       <br/>
-      <textarea ref="content" className="page-content" defaultValue={formatContent(page.content)} onChange={this.save}/>
+      {[<textarea key={this.props.id} ref="content" className="page-content" defaultValue={formatContent(page.content)} onChange={this.save}/>]}
       {contentError}
       <br/>
       {contentHintButton}
